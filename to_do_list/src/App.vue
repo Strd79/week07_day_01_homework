@@ -57,18 +57,47 @@ export default {
   margin-top: 60px;
 }
 
+li {
+  margin: auto;
+  margin-top: 10px;
+  padding: 4px 0;
+  width: 400px;
+  
+}
 
-  li.low{
-    border: 2px solid green;
-  }
+li.low{
+  border: 2px solid green;
+}
 
-  li.high{
-    border: 2px solid red;
-    color: red;
-  }
+li.high{
+  border: 2px solid red;
+  color: darkred;
+}
 
-  ul {
-    list-style: none;
-  }
+ul {
+  list-style: none;
+  margin-top: 30px;
+  padding: 0;
+}
+
+input[type=text] {
+  margin-left: 10px;
+  width: 250px;
+  height: 30px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  margin-left: 10px;
+  background-color: darkcyan;
+  color: white;
+  height: 30px;
+  width: 90px;
+  box-sizing: border-box;
+}
+
+label {
+  margin-left: 10px;
+}
 
 </style>
