@@ -1,7 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>David's To Do List</h1>
+    <form v-on:submit.prevent="saveNewToDoItem">
+      <label for="new-toDoItem">Add a new item to do:</label>
+      <input type="text" id="new-toDoItem" v-model="newToDoItem.name">
+      <label for="high">High</label>
+      <input type="radio" name="priority" id="high" value="high" v-model="newToDoItem.priority" required>
+      <label for="low">Low</label>
+      <input type="radio" name="priority" id="low" value="low" v-model="newToDoItem.priority">
+      <input type="submit" value="Save to list">
+    </form>
+    <ul>
+      <li v-for="(item, index) in toDoItems" :key="index" :class="item.priority">
+        <span>{{ item.name }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -9,9 +22,27 @@
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      toDoItems: [
+        {name: "Water plants", priority: "low"},
+        {name: "Get Milk", priority: "high"},
+        {name: "Book dentist appointment", priority: "high"},
+      ],
+      newToDoItem: {
+        name: "",
+        priority: null
+      },
+    };
+  },
+  methods: {
+    saveNewToDoItem: function() {
+      this.toDoItems.push(this.newToDoItem);
+      this.newToDoItem = {
+        name: "",
+        priority: null
+      };
+    }
   }
 }
 </script>
@@ -25,4 +56,19 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
+  li.low{
+    border: 2px solid green;
+  }
+
+  li.high{
+    border: 2px solid red;
+    color: red;
+  }
+
+  ul {
+    list-style: none;
+  }
+
 </style>
